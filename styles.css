@@ -47,6 +47,7 @@ button {
   top: 100px;
   transform: translateX(-50%);
   z-index: 999;
+  border-radius: 20px;
 }
 
 .inp {
@@ -54,8 +55,23 @@ button {
   gap: 5px;
   margin-bottom: 10px;
   justify-content: flex-start;
+  flex-direction: column;
 }
 
 .ok-btn {
-  margin-left: 70px;
+  margin-left: 50px;
+}
+
+#closeBtn {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  border: none;
+  width: 25px;
+  height: 25px;
+  font-weight: bold;
+  cursor: pointer;
 }
