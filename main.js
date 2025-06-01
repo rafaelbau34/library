@@ -11,9 +11,34 @@ function addBookToLibrary() {
   const list = document.getElementById("book-list");
   list.innerHTML = "";
   myLibrary.forEach((book, index) => {
-    const div = document.createElement("div");
-    div.textContent = `${book.title} by ${book.author}, ${book.pages} pages, Read: ${book.read}`;
-    list.appendChild(div);
+    const card = document.createElement("div");
+    card.classList.add("book-card");
+
+    const title = document.createElement("h3");
+    title.textContent = book.title;
+
+    const author = document.createElement("p");
+    author.textContent = `Author: ${book.author}`;
+
+    const pages = document.createElement("p");
+    pages.textContent = `Pages: ${book.pages}`;
+
+    const read = document.createElement("p");
+    read.textContent = `Read: ${book.read}`;
+
+    const toggleButton = document.createElement("button");
+    toggleButton.textContent = "Toggle Read";
+    toggleButton.addEventListener("click", () => {
+      book.read = book.read === "yes" ? "no" : "yes";
+      addBookToLibrary();
+    });
+    card.appendChild(title);
+    card.appendChild(author);
+    card.appendChild(pages);
+    card.appendChild(read);
+    card.appendChild(toggleButton);
+
+    list.appendChild(card);
   });
 }
 
@@ -39,6 +64,7 @@ document.getElementById("bookForm").addEventListener("submit", function (e) {
 
   const newBook = new Book(author, title, pages, read);
   myLibrary.push(newBook);
+  popUpForm.style.display = "none";
   addBookToLibrary();
 
   e.target.reset();
