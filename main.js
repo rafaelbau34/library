@@ -26,17 +26,33 @@ function addBookToLibrary() {
     const read = document.createElement("p");
     read.textContent = `Read: ${book.read}`;
 
+    const btnContainer = document.createElement("div");
+    btnContainer.style.display = "flex";
+    btnContainer.style.gap = "10px";
+
     const toggleButton = document.createElement("button");
     toggleButton.textContent = "Toggle Read";
     toggleButton.addEventListener("click", () => {
       book.read = book.read === "yes" ? "no" : "yes";
       addBookToLibrary();
     });
+
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "Delete";
+    delBtn.addEventListener("click", () => {
+      myLibrary.splice(index, 1);
+      addBookToLibrary();
+    });
+
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(pages);
     card.appendChild(read);
-    card.appendChild(toggleButton);
+
+    btnContainer.appendChild(toggleButton);
+    btnContainer.appendChild(delBtn);
+
+    card.appendChild(btnContainer);
 
     list.appendChild(card);
   });
