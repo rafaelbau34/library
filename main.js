@@ -1,8 +1,10 @@
-function Book(author, title, pages, read) {
-  this.author = author;
-  this.title = title;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(author, title, pages, read) {
+    this.author = author;
+    this.title = title;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
 const myLibrary = [];
@@ -62,11 +64,11 @@ const popUpForm = document.getElementById("popUpForm");
 const button = document.getElementById("addBook");
 const closeButton = document.getElementById("closeBtn");
 
-button.addEventListener("click", function () {
+button.addEventListener("click", () => {
   document.getElementById("popUpForm").style.display = "flex";
 });
 
-closeButton.addEventListener("click", function () {
+closeButton.addEventListener("click", () => {
   document.getElementById("popUpForm").style.display = "none";
 });
 
